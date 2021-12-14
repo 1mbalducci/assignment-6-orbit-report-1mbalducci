@@ -8,22 +8,22 @@
     </tr>
     <tr class="data-row" *ngFor= "let satellite of satellites">
         <td >{{satellite.name}}</td>
-      
-        <td [class.warning]="satellite.isSpaceDebris()">{{satellite.type}}</td>
+       
+        <td *ngIf = "satellite.isSpaceDebris() !== true; else yesWarning"> {{satellite.type}}</td> 
         <td>{{satellite.operational}}</td>
         <td>{{satellite.orbitType}}</td>
         <td>{{satellite.launchDate}}</td>
-   
+       
+        <ng-template #yesWarning>
+            <td class='warning'>
+             {{satellite.type}}
+            </td>
+        </ng-template>
     </tr>
 </table>
 
-<!-- <td *ngIf = "satellite.isSpaceDebris() !=== true; else yesWarning"> {{satellite.type}}</td>  -->
 
-<!-- <ng-template #yesWarning>
-    <td class='warning'>
-     {{satellite.type}}
-    </td>
-</ng-template> -->
+
 
 
 
